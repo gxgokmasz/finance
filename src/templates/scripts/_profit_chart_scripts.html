@@ -1,0 +1,95 @@
+<script>
+  const profitChartOptions = {
+    dataLabels: {
+      enabled: true,
+      style: {
+        cssClass: "text-xs text-white font-medium"
+      },
+    },
+    grid: {
+      show: false,
+      strokeDashArray: 4,
+      padding: {
+        left: 16,
+        right: 16,
+        top: -26
+      },
+    },
+    series: [
+      {
+        name: "Receitas",
+        data: [{% for metric in metrics %}"{{ metric.revenues_total }}",{% endfor %}],
+        color: "#0e9f6e",
+      },
+      {
+        name: "Despesas",
+        data: [{% for metric in metrics %}"{{ metric.expenses_total }}",{% endfor %}],
+        color: "#f05252",
+      },
+      {
+        name: "Saldo",
+        data: [{% for metric in metrics %}"{{ metric.balance}}",{% endfor %}],
+        color: "#3f83f8",
+      },
+    ],
+    chart: {
+      height: 345,
+      maxWidth: "100%",
+      type: "area",
+      fontFamily: "Inter, sans-serif",
+      dropShadow: {
+        enabled: false,
+      },
+      toolbar: {
+        show: false,
+      },
+    },
+    tooltip: {
+      enabled: true,
+      x: {
+        show: false,
+      },
+    },
+    legend: {
+      show: true,
+      labels: {
+        colors: ["#0e9f6e", "#f05252", "#3f83f8"]
+      }
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        opacityFrom: 0.55,
+        opacityTo: 0,
+        shade: "#1C64F2",
+        gradientToColors: ["#1C64F2"],
+      },
+    },
+    stroke: {
+      width: 6,
+    },
+    xaxis: {
+      categories: [{% for date in dates %}"{{ date }}",{% endfor %}],
+      labels: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+    },
+    yaxis: {
+      show: false,
+      labels: {
+        formatter: (value) => "R$" + value,
+      }
+    },
+  };
+    
+  if (document.getElementById("profit-chart") && typeof ApexCharts !== "undefined") {
+    const chart = new ApexCharts(document.getElementById("profit-chart"), profitChartOptions);
+    chart.render();
+  }    
+</script>

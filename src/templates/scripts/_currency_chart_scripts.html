@@ -1,0 +1,68 @@
+<script>
+  const currencyChartOptions = {
+    series: [
+      {{ revenues_percentage }},
+      {{ expenses_percentage }}
+    ],
+    colors: ["#0e9f6e", "#f05252"],
+    chart: {
+      height: 420,
+      width: "100%",
+      type: "pie",
+    },
+    stroke: {
+      colors: ["#03543f", "#9b1c1c"],
+      lineCap: "",
+    },
+    plotOptions: {
+      pie: {
+        labels: {
+          show: true,
+        },
+        size: "100%",
+        dataLabels: {
+          offset: -25,
+        },
+      },
+    },
+    labels: ["Receitas", "Despesas"],
+    dataLabels: {
+      enabled: true,
+      style: {
+        fontFamily: "Inter, sans-serif",
+      },
+    },
+    legend: {
+      position: "bottom",
+      fontFamily: "Inter, sans-serif",
+      labels: {
+        colors: ["#0e9f6e", "#f05252"]
+      }
+    },
+    yaxis: {
+      labels: {
+        formatter: function (value) {
+          return value + "%";
+        },
+      },
+    },
+    xaxis: {
+      labels: {
+        formatter: function (value) {
+          return value + "%";
+        },
+      },
+      axisTicks: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+    },
+  };
+
+  if (document.getElementById("currency-chart") && typeof ApexCharts !== "undefined") {
+    const chart = new ApexCharts(document.getElementById("currency-chart"), currencyChartOptions);
+    chart.render();
+  }
+</script>

@@ -1,0 +1,11 @@
+type,category,amount
+Expense,Alimentação,450.00
+Revenue,Salário,5000.00
+Expense,Transporte,120.00
+Revenue,Investimentos,7800.00
+Expense,Moradia,12500.00
+Revenue,Venda de Ativos,9000.00
+Expense,Educação,3200.00
+Revenue,Reembolso,1200.00
+Expense,Saúde,1500.00
+Revenue,Presente,500.00

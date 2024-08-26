@@ -1,0 +1,8 @@
+{% extends "_base.html" %}
+{% block root %}
+  <div class="flex flex-col w-dvw h-dvh bg-white dark:bg-gray-900">
+    {% include "partials/_header.html" %}
+    {% block content %}
+    {% endblock content %}
+  </div>
+{% endblock root %}

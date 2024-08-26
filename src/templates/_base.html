@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="dark">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="personal finance management page">
+    <meta name="keywords"
+          content="html, css, js, python, django, tailwind, flowbite">
+    <title>
+      {% block title %}
+      {% endblock title %}
+    </title>
+    {% include "meta/css.html" %}
+  </head>
+  <body>
+    {% block root %}
+    {% endblock root %}
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    {% block messages %}
+    {% endblock messages %}
+    {% block script %}
+    {% endblock script %}
+  </body>
+</html>
