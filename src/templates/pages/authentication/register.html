@@ -4,14 +4,12 @@
   Finance | Register
 {% endblock title %}
 {% block content %}
-  <section class="bg-gray-50 dark:bg-gray-900">
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">Cadastrar</h1>
-          <form class="space-y-4 md:space-y-6"
-                action="{% url 'register' %}"
-                method="post">
+  <section class="h-full w-full bg-gray-50 dark:bg-gray-900">
+    <div class="flex items-center justify-center h-full w-full p-4 sm:p-6">
+      <div class="w-full bg-white rounded-lg shadow drop-shadow dark:border sm:max-w-md dark:bg-gray-800 dark:border-gray-700">
+        <div class="p-8 space-y-4 sm:space-y-6">
+          <h1 class="text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">Cadastrar</h1>
+          <form class="space-y-4 sm:space-y-6" action="{% url 'register' %}" method="post">
             {% csrf_token %}
             <div>
               <label for="id_username"

@@ -1,5 +1,5 @@
-<div class="relative w-full sm:rounded-lg">
-  <div class="flex gap-4 flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
+<div class="flex flex-col gap-6 w-full h-full">
+  <div class="flex flex-col gap-6 justify-between sm:flex-row">
     <form action="{% url 'home' %}" method="get">
       <label for="transaction_search" class="sr-only">Pesquisar transações</label>
       <div class="relative">
@@ -22,15 +22,13 @@
         <input type="submit" class="sr-only">
       </div>
     </form>
-    <form action="{% url 'home' %}">
-      <button data-modal-target="new-transaction-modal"
-              data-modal-toggle="new-transaction-modal"
-              class="block shadow-md drop-shadow-md text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              type="button">Nova Transação</button>
-    </form>
+    <button data-modal-target="new-transaction-modal"
+            data-modal-toggle="new-transaction-modal"
+            class="self-start shadow drop-shadow text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            type="button">Nova Transação</button>
   </div>
-  <div class="overflow-x-auto shadow-md drop-shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left overflow-x-auto shadow-md rtl:text-right text-gray-500 dark:text-gray-400">
+  <div class="relative overflow-x-auto shadow drop-shadow rounded-lg">
+    <table class="w-full text-sm text-left overflow-x-auto rtl:text-right text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
           <th scope="col" class="px-6 py-3">Categoria</th>
