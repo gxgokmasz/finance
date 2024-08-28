@@ -4,36 +4,40 @@
   Finance | Dashboard
 {% endblock title %}
 {% block content %}
-  <div class="flex flex-1 p-4 bg-white dark:bg-gray-900">
-    <div class="flex flex-col flex-1 p-4 rounded-lg dark:border-gray-700 mt-10">
-      <div class="grid grid-cols-3 gap-4 my-4">
-        {% include "partials/transactions/_currency_card.html" with title="Despesas" tb_color="text-red-500" value=profit_metrics.expenses_total %}
-        {% include "partials/transactions/_currency_card.html" with title="Receitas" tb_color="text-green-500" value=profit_metrics.revenues_total %}
-        {% include "partials/transactions/_currency_card.html" with title="Saldo" tb_color="text-blue-500" value=profit_metrics.profit_total %}
-      </div>
-      <div class="flex flex-1 gap-4 rounded-lg dark:border-gray-700 my-4">
-        <div class="flex items-center justify-center gap-20 p-4 h-full w-1/2">
-          {% include "partials/transactions/_currency_chart.html" %}
-          {% include "partials/transactions/_profit_chart.html" %}
+  <main class="bg-white dark:bg-gray-900">
+    <div class="flex w-full min-h-[calc(100dvh-80px)] p-6">
+      <div class="flex flex-col flex-1">
+        <div class="grid gap-6 my-6 md:grid-cols-3">
+          {% include "partials/transactions/_currency_card.html" with title="Saldo" tb_color="text-blue-500" value=profit_metrics.profit_total %}
+          {% include "partials/transactions/_currency_card.html" with title="Receitas" tb_color="text-green-500" value=profit_metrics.revenues_total %}
+          {% include "partials/transactions/_currency_card.html" with title="Despesas" tb_color="text-red-500" value=profit_metrics.expenses_total %}
         </div>
-        <div class="relative flex flex-col gap-4 items-center justify-start p-4 h-full w-1/2">
-          {% include "partials/transactions/_currency_table.html" with transactions=transactions %}
-          {% include "partials/_pagination.html" with page_obj=page_obj %}
+        <div class="flex flex-col gap-6 w-full h-full my-6 2xl:flex-row">
+          <div class="flex items-center flex-1">
+            <div class="flex flex-col items-center flex-1 gap-6 mt-6 md:flex-row md:items-stretch md:justify-around 2xl:m-0">
+              {% include "partials/transactions/_currency_chart.html" %}
+              {% include "partials/transactions/_profit_chart.html" %}
+            </div>
+          </div>
+          <div class="flex flex-col flex-1 gap-6 -order-1 2xl:order-none">
+            {% include "partials/transactions/_currency_table.html" with transactions=transactions %}
+            {% include "partials/_pagination.html" with page_obj=page_obj %}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  {% include "partials/transactions/_new_transaction_modal.html" with new_transaction_form=new_transaction_form %}
+  </main>
+{% endblock content %}
+{% block asides %}
   {% if messages %}
-    <div id="toast-container" class="fixed top-4 right-4 space-y-20">
+    <div id="toast-container" class="fixed top-4 right-4 space-y-24">
       {% for message in messages %}
         {% include "partials/_toast_danger.html" with message=message id=forloop.counter %}
       {% endfor %}
     </div>
   {% endif %}
-{% endblock content %}
-{% block messages %}
-{% endblock messages %}
+  {% include "partials/transactions/_new_transaction_modal.html" with new_transaction_form=new_transaction_form %}
+{% endblock asides %}
 {% block script %}
   {% include "scripts/_currency_chart_scripts.html" with revenues_percentage=currency_percentages.revenues_percentage expenses_percentage=currency_percentages.expenses_percentage %}
   {% include "scripts/_profit_chart_scripts.html" with dates=weekly_xip_relationship.dates metrics=weekly_xip_relationship.metrics %}

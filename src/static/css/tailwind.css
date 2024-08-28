@@ -1227,6 +1227,10 @@ input:checked + .toggle-bg {
   z-index: 50;
 }
 
+.-order-1 {
+  order: -1;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
@@ -1249,6 +1253,11 @@ input:checked + .toggle-bg {
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .-ms-1 {
@@ -1287,16 +1296,16 @@ input:checked + .toggle-bg {
   margin-top: 0.25rem;
 }
 
-.mt-10 {
-  margin-top: 2.5rem;
-}
-
 .mt-2 {
   margin-top: 0.5rem;
 }
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
 }
 
 .block {
@@ -1331,6 +1340,11 @@ input:checked + .toggle-bg {
   display: none;
 }
 
+.size-10 {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 .size-20 {
   width: 5rem;
   height: 5rem;
@@ -1339,6 +1353,21 @@ input:checked + .toggle-bg {
 .size-6 {
   width: 1.5rem;
   height: 1.5rem;
+}
+
+.size-8 {
+  width: 2rem;
+  height: 2rem;
+}
+
+.size-9 {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.size-7 {
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 .h-10 {
@@ -1383,6 +1412,10 @@ input:checked + .toggle-bg {
 
 .max-h-full {
   max-height: 100%;
+}
+
+.min-h-\[calc\(100dvh-80px\)\] {
+  min-height: calc(100dvh - 80px);
 }
 
 .w-1\/2 {
@@ -1524,12 +1557,12 @@ input:checked + .toggle-bg {
   list-style-type: none;
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .grid-cols-4 {
@@ -1538,6 +1571,46 @@ input:checked + .toggle-bg {
 
 .grid-cols-7 {
   grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.grid-cols-\[200px_minmax\(900px\2c _1fr\)_100px\] {
+  grid-template-columns: 200px minmax(900px, 1fr) 100px;
+}
+
+.grid-cols-\[minmax\(900px\2c _1fr\)_100px\] {
+  grid-template-columns: minmax(900px, 1fr) 100px;
+}
+
+.grid-cols-\[minmax\(900px\2c _1fr\)\] {
+  grid-template-columns: minmax(900px, 1fr);
+}
+
+.grid-cols-\[minmax\(autofit\2c _1fr\)\] {
+  grid-template-columns: minmax(autofit, 1fr);
+}
+
+.grid-cols-\[minmax\(auto-fit\2c _1fr\)\] {
+  grid-template-columns: minmax(auto - fit, 1fr);
+}
+
+.grid-cols-\[minmax\(\'auto-fit\'\2c _1fr\)\] {
+  grid-template-columns: minmax('auto - fit', 1fr);
+}
+
+.grid-cols-\[minmax\(\'auto-fit\'\2c 1fr\)\] {
+  grid-template-columns: minmax('auto - fit',1fr);
+}
+
+.grid-cols-\[minmax\(autofit\2c 1fr\)\] {
+  grid-template-columns: minmax(autofit,1fr);
+}
+
+.grid-cols-\[repeat\(minmax\(autofit\2c 1fr\)\)\] {
+  grid-template-columns: repeat(minmax(autofit,1fr));
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1584,12 +1657,12 @@ input:checked + .toggle-bg {
   gap: 0.5rem;
 }
 
-.gap-20 {
-  gap: 5rem;
-}
-
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
 }
 
 .-space-x-px > :not([hidden]) ~ :not([hidden]) {
@@ -1610,10 +1683,10 @@ input:checked + .toggle-bg {
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.space-y-20 > :not([hidden]) ~ :not([hidden]) {
+.space-y-24 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
-  margin-top: calc(5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(5rem * var(--tw-space-y-reverse));
+  margin-top: calc(6rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(6rem * var(--tw-space-y-reverse));
 }
 
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
@@ -1631,6 +1704,10 @@ input:checked + .toggle-bg {
 .divide-gray-100 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-divide-opacity));
+}
+
+.self-start {
+  align-self: flex-start;
 }
 
 .overflow-hidden {
@@ -1877,17 +1954,8 @@ input:checked + .toggle-bg {
   padding-bottom: 1.5rem;
 }
 
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
 .pb-2 {
   padding-bottom: 0.5rem;
-}
-
-.pb-4 {
-  padding-bottom: 1rem;
 }
 
 .ps-10 {
@@ -1910,9 +1978,9 @@ input:checked + .toggle-bg {
   text-align: center;
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-4xl {
@@ -1943,6 +2011,11 @@ input:checked + .toggle-bg {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .font-bold {
@@ -2076,6 +2149,11 @@ input:checked + .toggle-bg {
 
 .blur {
   --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.drop-shadow {
+  --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
@@ -2435,18 +2513,14 @@ input:checked + .toggle-bg {
     flex-direction: row;
   }
 
-  .sm\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
+  .sm\:space-y-6 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;
-    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(0px * var(--tw-space-y-reverse));
+    margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
   }
 
-  .sm\:rounded-lg {
-    border-radius: 0.5rem;
-  }
-
-  .sm\:p-8 {
-    padding: 2rem;
+  .sm\:p-6 {
+    padding: 1.5rem;
   }
 }
 
@@ -2479,16 +2553,24 @@ input:checked + .toggle-bg {
     display: none;
   }
 
-  .md\:h-screen {
-    height: 100vh;
-  }
-
   .md\:w-auto {
     width: auto;
   }
 
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:items-stretch {
+    align-items: stretch;
+  }
+
+  .md\:justify-around {
+    justify-content: space-around;
   }
 
   .md\:space-x-0 > :not([hidden]) ~ :not([hidden]) {
@@ -2501,12 +2583,6 @@ input:checked + .toggle-bg {
     --tw-space-x-reverse: 0;
     margin-right: calc(2rem * var(--tw-space-x-reverse));
     margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
-  }
-
-  .md\:space-y-6 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-y-reverse: 0;
-    margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
   }
 
   .md\:border-0 {
@@ -2532,11 +2608,6 @@ input:checked + .toggle-bg {
 
   .md\:p-6 {
     padding: 1.5rem;
-  }
-
-  .md\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
   }
 
   .md\:text-blue-700 {
@@ -2571,16 +2642,17 @@ input:checked + .toggle-bg {
   }
 }
 
-@media (min-width: 1024px) {
-  .lg\:py-0 {
-    padding-top: 0px;
-    padding-bottom: 0px;
+@media (min-width: 1536px) {
+  .\32xl\:order-none {
+    order: 0;
   }
-}
 
-@media (min-width: 1280px) {
-  .xl\:p-0 {
-    padding: 0px;
+  .\32xl\:m-0 {
+    margin: 0px;
+  }
+
+  .\32xl\:flex-row {
+    flex-direction: row;
   }
 }
 
@@ -2599,4 +2671,55 @@ input:checked + .toggle-bg {
 
 .rtl\:text-right:where([dir="rtl"], [dir="rtl"] *) {
   text-align: right;
+}
+
+@media(min(530px)) {
+  .\[\@media\(min\(530px\)\)\]\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+@media(min-w(530px)) {
+  .\[\@media\(min-w\(530px\)\)\]\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+@media(min-width:1100px) {
+  .\[\@media\(min-width\:1100px\)\]\:block {
+    display: block;
+  }
+
+  .\[\@media\(min-width\:1100px\)\]\:hidden {
+    display: none;
+  }
+
+  .\[\@media\(min-width\:1100px\)\]\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+@media(min-width:530px) {
+  .\[\@media\(min-width\:530px\)\]\:size-20 {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .\[\@media\(min-width\:530px\)\]\:size-9 {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .\[\@media\(min-width\:530px\)\]\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .\[\@media\(min-width\:530px\)\]\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
 }
