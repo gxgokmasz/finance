@@ -6,14 +6,14 @@ class TransactionForm(forms.ModelForm):
 
     class Meta:
         model = Transaction
-        fields = ("category", "type", "amount")
+        fields = ("category", "genre", "amount")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.fields["category"].widget.attrs["class"] = "input-field input-default"
 
-        self.fields["type"].widget.attrs["class"] = "input-field input-default"
+        self.fields["genre"].widget.attrs["class"] = "input-field input-default"
 
         self.fields["amount"].widget.attrs["class"] = "input-field input-default"
 
