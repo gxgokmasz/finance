@@ -1,5 +1,5 @@
-<div class="flex flex-col gap-6 w-full h-full">
-  <div class="flex flex-col gap-6 justify-between sm:flex-row">
+<div class="flex flex-col justify-center gap-4 max-w-full h-full xl:max-w-2xl 2xl:max-w-full">
+  <div class="flex flex-col gap-4 items-center justify-between sm:flex-row">
     <form action="{% url 'home' %}" method="get">
       <label for="transaction_search" class="sr-only">Pesquisar transações</label>
       <div class="relative">
@@ -17,70 +17,74 @@
                id="transaction_search"
                name="transaction_search"
                value="{{ request.GET.transaction_search }}"
-               class="block p-2 ps-10 shadow-md drop text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               class="block p-2 ps-10 max-w-64 shadow text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                placeholder="Pesquisar transações">
         <input type="submit" class="sr-only">
       </div>
     </form>
-    <button data-modal-target="new-transaction-modal"
-            data-modal-toggle="new-transaction-modal"
-            class="self-start shadow drop-shadow text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            type="button">Nova Transação</button>
+    <div>
+      <button data-modal-target="new-transaction-modal"
+              data-modal-toggle="new-transaction-modal"
+              class="self-start shadow drop-shadow text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              type="button">Nova Transação</button>
+    </div>
   </div>
-  <div class="relative overflow-x-auto shadow drop-shadow rounded-lg">
-    <table class="w-full text-sm text-left overflow-x-auto rtl:text-right text-gray-500 dark:text-gray-400">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-        <tr>
-          <th scope="col" class="px-6 py-3">Categoria</th>
-          <th scope="col" class="px-6 py-3">Tipo de transação</th>
-          <th scope="col" class="px-6 py-3">Quantia</th>
-          <th scope="col" class="px-6 py-3">Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for transaction in transactions %}
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 last:border-0">
-            <th scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              {{ transaction.category }}
-            </th>
-            <td class="px-6 py-4">
-              {% if transaction.type == "Expense" %}
-                Despesa
-              {% else %}
-                Receita
-              {% endif %}
-            </td>
-            <td class="px-6 py-4">
-              <div class="flex gap-1">
-                <span>R$</span>
-                <span>{{ transaction.amount }}</span>
-              </div>
-            </td>
-            <td class="px-6 py-4">
-              <form action="{% url 'home' %}" method="post">
-                {% csrf_token %}
-                <input type="text"
-                       class="sr-only"
-                       name="transaction_to_delete"
-                       value="{{ transaction.slug }}">
-                <button type="submit"
-                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm p-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                  <svg class="w-6 h-6 text-gray-800 dark:text-white"
-                       aria-hidden="true"
-                       xmlns="http://www.w3.org/2000/svg"
-                       width="24"
-                       height="24"
-                       fill="none"
-                       viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
-                  </svg>
-                </button>
-              </form>
-            </td>
+  <div class="flex justify-center w-full sm:block">
+    <div class="relative overflow-x-scroll max-w-64 shadow drop-shadow rounded-lg sm:max-w-full sm:overflow-x-auto">
+      <table class="w-full text-sm text-left overflow-x-auto rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3">Categoria</th>
+            <th scope="col" class="px-6 py-3">Tipo de transação</th>
+            <th scope="col" class="px-6 py-3">Quantia</th>
+            <th scope="col" class="px-6 py-3">Ações</th>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {% for transaction in transactions %}
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 last:border-0">
+              <th scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{ transaction.category }}
+              </th>
+              <td class="px-6 py-4">
+                {% if transaction.type == "Expense" %}
+                  Despesa
+                {% else %}
+                  Receita
+                {% endif %}
+              </td>
+              <td class="px-6 py-4">
+                <div class="flex gap-1">
+                  <span>R$</span>
+                  <span>{{ transaction.amount }}</span>
+                </div>
+              </td>
+              <td class="px-6 py-4">
+                <form action="{% url 'home' %}" method="post">
+                  {% csrf_token %}
+                  <input type="text"
+                         class="sr-only"
+                         name="transaction_to_delete"
+                         value="{{ transaction.slug }}">
+                  <button type="submit"
+                          class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm p-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white"
+                         aria-hidden="true"
+                         xmlns="http://www.w3.org/2000/svg"
+                         width="24"
+                         height="24"
+                         fill="none"
+                         viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
+                    </svg>
+                  </button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
