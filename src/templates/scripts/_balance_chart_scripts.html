@@ -1,5 +1,5 @@
 <script>
-  const profitChartOptions = {
+  const balanceChartOptions = {
     dataLabels: {
       enabled: true,
       style: {
@@ -28,7 +28,7 @@
       },
       {
         name: "Saldo",
-        data: [{% for metric in metrics %}"{{ metric.balance}}",{% endfor %}],
+        data: [{% for metric in metrics %}"{{ metric.balance }}",{% endfor %}],
         color: "#3f83f8",
       },
     ],
@@ -88,8 +88,8 @@
     },
   };
     
-  if (document.getElementById("profit-chart") && typeof ApexCharts !== "undefined") {
-    const chart = new ApexCharts(document.getElementById("profit-chart"), profitChartOptions);
+  if (document.getElementById("balance-chart") && typeof ApexCharts !== "undefined") {
+    const chart = new ApexCharts(document.getElementById("balance-chart"), balanceChartOptions);
     chart.render();
   }    
 </script>

@@ -5,15 +5,15 @@ from .models import Transaction
 
 @admin.register(Transaction)
 class TransactionAdmin(admin.ModelAdmin):
-    list_display = ("type", "amount", "category", "account")
+    list_display = ("genre", "amount", "category", "account")
     list_per_page = 10
 
     fieldsets = (
-        (_("Informações da transação"), {"fields": ("type", "amount", "category", "account")}),
+        (_("Informações da transação"), {"fields": ("genre", "amount", "category", "account")}),
         (_("Datas importantes"), {"fields": ("created_at", "updated_at")}),
         (_("Identificadores"), {"fields": ("id", "slug")}),
     )
-    add_fieldsets = ((None, {"fields": ("type", "amount", "category", "account")}),)
+    add_fieldsets = ((None, {"fields": ("genre", "amount", "category", "account")}),)
     readonly_fields = ("id", "slug", "created_at", "updated_at")
 
     def get_fieldsets(self, request, obj=None):

@@ -8,14 +8,14 @@
     <div class="flex w-full min-h-[calc(100dvh-64px)] p-4">
       <div class="flex flex-col flex-1">
         <div class="flex flex-col gap-4 my-4 sm:flex-row">
-          {% include "partials/transactions/_currency_card.html" with title="Saldo" tb_color="text-blue-500" value=profit_metrics.profit_total %}
-          {% include "partials/transactions/_currency_card.html" with title="Receitas" tb_color="text-green-500" value=profit_metrics.revenues_total %}
-          {% include "partials/transactions/_currency_card.html" with title="Despesas" tb_color="text-red-500" value=profit_metrics.expenses_total %}
+          {% include "partials/transactions/_currency_card.html" with title="Saldo" tb_color="text-blue-500" value=balance_metrics.balance %}
+          {% include "partials/transactions/_currency_card.html" with title="Receitas" tb_color="text-green-500" value=balance_metrics.revenues_total %}
+          {% include "partials/transactions/_currency_card.html" with title="Despesas" tb_color="text-red-500" value=balance_metrics.expenses_total %}
         </div>
         <div class="flex flex-col gap-4 w-full h-full my-4 xl:flex-row">
           <div class="flex flex-col items-center justify-around flex-1 gap-4 mt-4 md:flex-row xl:justify-center xl:mt-0">
             {% include "partials/transactions/_currency_chart.html" %}
-            {% include "partials/transactions/_profit_chart.html" %}
+            {% include "partials/transactions/_balance_chart.html" %}
           </div>
           <div class="flex flex-col flex-1 gap-4 order-first xl:items-center xl:order-last 2xl:items-stretch">
             {% include "partials/transactions/_currency_table.html" with transactions=transactions %}
@@ -28,7 +28,7 @@
 {% endblock content %}
 {% block asides %}
   {% if messages %}
-    <div id="toast-container" class="fixed top-4 right-4 space-y-24">
+    <div id="toasts-container" class="fixed top-4 right-4 space-y-24">
       {% for message in messages %}
         {% include "partials/_toast_danger.html" with message=message id=forloop.counter %}
       {% endfor %}
@@ -38,5 +38,5 @@
 {% endblock asides %}
 {% block script %}
   {% include "scripts/_currency_chart_scripts.html" with revenues_percentage=currency_percentages.revenues_percentage expenses_percentage=currency_percentages.expenses_percentage %}
-  {% include "scripts/_profit_chart_scripts.html" with dates=weekly_xip_relationship.dates metrics=weekly_xip_relationship.metrics %}
+  {% include "scripts/_balance_chart_scripts.html" with dates=weekly_xip_relationship.dates metrics=weekly_xip_relationship.metrics %}
 {% endblock script %}

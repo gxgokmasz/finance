@@ -22,7 +22,7 @@ class DashboardView(ListView, FormMixin, ProcessFormView):
     def initialize_requests_common_data(self, request, *args, **kwargs):
         transactions_metrics = TransactionsMetrics(request.user)
 
-        self.profit_metrics = transactions_metrics.get_profit_metrics()
+        self.balance_metrics = transactions_metrics.get_balance_metrics()
         self.currency_percentages = transactions_metrics.get_currency_percentages()
         self.weekly_xip_relationship = transactions_metrics.get_weekly_xip_relationship()
         self.object_list = super().get_queryset(*args, **kwargs)
@@ -60,15 +60,15 @@ class DashboardView(ListView, FormMixin, ProcessFormView):
     def form_invalid(self, form):
         has_amount_errors = form.errors.get("amount")
         has_category_errors = form.errors.get("category")
-        has_type_errors = form.errors.get("type")
+        has_genre_errors = form.errors.get("genre")
 
         amount_errors = has_amount_errors.data[0] if has_amount_errors else []
 
         category_errors = has_category_errors.data[0] if has_category_errors else []
 
-        type_errors = has_type_errors.data[0] if has_type_errors else []
+        genre_errors = has_genre_errors.data[0] if has_genre_errors else []
 
-        errors = [*amount_errors, *category_errors, *type_errors]
+        errors = [*amount_errors, *category_errors, *genre_errors]
 
         for error in errors:
             messages.add_message(self.request, messages.ERROR, error)
@@ -94,7 +94,7 @@ class DashboardView(ListView, FormMixin, ProcessFormView):
         context = super().get_context_data(**kwargs)
 
         context["new_transaction_form"] = TransactionForm()
-        context["profit_metrics"] = self.profit_metrics
+        context["balance_metrics"] = self.balance_metrics
         context["currency_percentages"] = self.currency_percentages
         context["weekly_xip_relationship"] = self.weekly_xip_relationship
 
