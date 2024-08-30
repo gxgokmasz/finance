@@ -91,6 +91,10 @@ AUTH_USER_MODEL = "authentication.User"
 
 LOGIN_URL = reverse_lazy("login")
 
+LOGIN_REDIRECT_URL = reverse_lazy("home")
+
+LOGOUT_REDIRECT_URL = reverse_lazy("login")
+
 GRAPPELLI_ADMIN_TITLE = "Finance Admin"
 
 LANGUAGE_CODE = "pt-br"
