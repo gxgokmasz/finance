@@ -19,7 +19,10 @@
           <span class="sr-only">Close modal</span>
         </button>
       </div>
-      <form class="p-4 md:p-5" action="{% url 'home' %}" method="post" accept-charset="utf-8">
+      <form class="p-4 md:p-5"
+            action="{% url 'home' %}"
+            method="post"
+            accept-charset="utf-8">
         {% csrf_token %}
         <div class="grid gap-4 mb-4 grid-cols-2">
           <div class="col-span-2">
