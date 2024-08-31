@@ -11,7 +11,7 @@ def format_currency(amount):
 class TransactionsMetrics:
 
     def __init__(self, user):
-        self.account = Account.objects.get(user=user)
+        self.account = Account.objects.prefetch_related("transactions").get(user=user)
 
         self.account_expense_transactions = self.account.transactions.filter(genre="EX")
         self.account_revenue_transactions = self.account.transactions.filter(genre="RV")

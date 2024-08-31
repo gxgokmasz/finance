@@ -1,10 +1,10 @@
-from django.contrib.auth import forms
+from django.contrib.auth import forms as auth_forms
 from .models import User
 
 
-class UserCreationForm(forms.UserCreationForm):
+class UserCreationForm(auth_forms.UserCreationForm):
 
-    class Meta(forms.UserCreationForm.Meta):
+    class Meta(auth_forms.UserCreationForm.Meta):
         model = User
         fields = ("username", "email")
 
@@ -22,16 +22,16 @@ class UserCreationForm(forms.UserCreationForm):
         self.fields["password2"].widget.attrs["required"] = True
 
 
-class UserChangeForm(forms.UserChangeForm):
+class UserChangeForm(auth_forms.UserChangeForm):
 
-    class Meta(forms.UserChangeForm.Meta):
+    class Meta(auth_forms.UserChangeForm.Meta):
         model = User
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
 
-class AuthenticationForm(forms.AuthenticationForm):
+class AuthenticationForm(auth_forms.AuthenticationForm):
 
     def __init__(self, request=None, *args, **kwargs):
         super().__init__(request, *args, **kwargs)

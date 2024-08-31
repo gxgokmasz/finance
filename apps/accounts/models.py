@@ -6,7 +6,7 @@ from apps.authentication.models import User
 
 class Account(CommonModel):
     user = models.OneToOneField(
-        User, models.CASCADE, related_name="account", verbose_name=_("usuário")
+        User, models.CASCADE, related_name="account", verbose_name=_("usuário"), editable=False
     )
 
     def __str__(self):
