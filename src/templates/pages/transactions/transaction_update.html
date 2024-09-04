@@ -15,17 +15,44 @@
           <div>
             <label for="id_category"
                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoria</label>
-            {{ form.category }}
+            {% if form.category.errors %}
+              {{ form.category|error_input }}
+            {% else %}
+              {{ form.category }}
+            {% endif %}
+            {% if form.category.errors %}
+              {% for error in form.category.errors %}
+                {% include "partials/common/_error-message.html" with error=error %}
+              {% endfor %}
+            {% endif %}
           </div>
           <div>
             <label for="id_kind"
                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo</label>
-            {{ form.kind }}
+            {% if form.kind.errors %}
+              {{ form.kind|error_input }}
+            {% else %}
+              {{ form.kind }}
+            {% endif %}
+            {% if form.kind.errors %}
+              {% for error in form.kind.errors %}
+                {% include "partials/common/_error-message.html" with error=error %}
+              {% endfor %}
+            {% endif %}
           </div>
           <div>
             <label for="id_amount"
                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantia</label>
-            {{ form.amount }}
+            {% if form.amount.errors %}
+              {{ form.amount|error_input }}
+            {% else %}
+              {{ form.amount }}
+            {% endif %}
+            {% if form.amount.errors %}
+              {% for error in form.amount.errors %}
+                {% include "partials/common/_error-message.html" with error=error %}
+              {% endfor %}
+            {% endif %}
           </div>
           <div class="flex flex-col gap-3">
             <button id="submit_button"

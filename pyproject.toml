@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "finance"
+name = "spendwise"
 version = "1.0.0"
 description = ""
 authors = ["Kauã Mateus"]

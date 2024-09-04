@@ -31,7 +31,7 @@
                 {{ form.password }}
               {% endif %}
               {% if form.errors %}
-                <div class="mt-1">{% include "partials/_error-message.html" with error="Usuário ou senha incorretos" %}</div>
+                {% include "partials/common/_error-message.html" with error="Usuário ou senha incorretos" %}
               {% endif %}
             </div>
             <button id="submit_button"
