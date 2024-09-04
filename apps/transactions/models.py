@@ -4,12 +4,9 @@ from apps.accounts.models import Account
 from core.common.models import CommonModel
 
 
-TRANSACTION_TYPES = [("Expense", "Despesa"), ("Revenue", "Receita")]
-
-
 class Transaction(CommonModel):
 
-    class TransactionGenres(models.TextChoices):
+    class TransactionKinds(models.TextChoices):
         EXPENSE = "EX", _("Despesa")
         REVENUE = "RV", _("Receita")
 
@@ -23,7 +20,7 @@ class Transaction(CommonModel):
     )
     category = models.CharField(_("categoria"), max_length=60)
     amount = models.DecimalField(_("quantia"), max_digits=7, decimal_places=2)
-    genre = models.CharField(_("gênero"), max_length=7, choices=TransactionGenres)
+    kind = models.CharField(_("gênero"), max_length=7, choices=TransactionKinds)
 
     def __str__(self):
-        return f"{self.genre} - {self.amount} - {self.category}"
+        return f"{self.kind} - {self.amount} - {self.category}"

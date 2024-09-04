@@ -14,7 +14,7 @@ class Command(BaseCommand):
             transactions_df = pd.read_csv("mocks/transactions.csv", encoding="UTF-8")
 
             for _, row in transactions_df.iterrows():
-                genre = row["genre"]
+                kind = row["kind"]
                 category = row["category"]
                 amount = row["amount"]
 
@@ -24,11 +24,11 @@ class Command(BaseCommand):
                     raise User.DoesNotExist(e)
 
                 new_transaction = Transaction.objects.create(
-                    account=user.account, genre=genre, category=category, amount=amount
+                    account=user.account, kind=kind, category=category, amount=amount
                 )
 
                 notice_text = "%s - %d - %s" % (
-                    new_transaction.genre,
+                    new_transaction.kind,
                     new_transaction.amount,
                     new_transaction.category,
                 )

@@ -1,0 +1,8 @@
+{% extends "layouts/main.html" %}
+{% load input_tags %}
+{% block title %}
+  Finance | Dashboard
+{% endblock title %}
+{% block content %}
+  {% include "partials/transactions/_currency_card_group.html" with balance_metrics=balance_metrics %}
+{% endblock content %}

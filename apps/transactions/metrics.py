@@ -13,8 +13,8 @@ class TransactionsMetrics:
     def __init__(self, user):
         self.account = Account.objects.prefetch_related("transactions").get(user=user)
 
-        self.account_expense_transactions = self.account.transactions.filter(genre="EX")
-        self.account_revenue_transactions = self.account.transactions.filter(genre="RV")
+        self.account_expense_transactions = self.account.transactions.filter(kind="EX")
+        self.account_revenue_transactions = self.account.transactions.filter(kind="RV")
 
         self.account_expenses_total = (
             self.account_expense_transactions.aggregate(total=Sum("amount"))["total"] or 0

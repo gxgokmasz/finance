@@ -15,7 +15,7 @@ class TransactionTestCase(TestCase):
             account=self.user.account,
             category="Alimentação",
             amount=500,
-            genre="EX",
+            kind="EX",
         )
 
         self.assertTrue(Transaction.objects.filter(account=self.user.account))
@@ -26,10 +26,10 @@ class TransactionTestCase(TestCase):
             account=self.user.account,
             category="Salário",
             amount=5000,
-            genre="RV",
+            kind="RV",
         )
 
         self.assertEqual(
             transaction.__str__(),
-            f"{transaction.genre} - {transaction.amount} - {transaction.category}",
+            f"{transaction.kind} - {transaction.amount} - {transaction.category}",
         )
