@@ -1,7 +1,5 @@
-from django.core.exceptions import ValidationError
 from django.test import TestCase
 from apps.transactions.forms import TransactionForm
-from apps.transactions.models import Transaction
 
 
 class TransactionFormTestCase(TestCase):
@@ -11,7 +9,7 @@ class TransactionFormTestCase(TestCase):
             data={
                 "category": "Alimentação",
                 "amount": 500,
-                "genre": "EX",
+                "kind": "EX",
             }
         )
 
@@ -22,7 +20,7 @@ class TransactionFormTestCase(TestCase):
             data={
                 "category": "Alimentação",
                 "amount": 20000,
-                "genre": "EX",
+                "kind": "EX",
             }
         )
 
@@ -37,11 +35,11 @@ class TransactionFormTestCase(TestCase):
             data={
                 "category": "",
                 "amount": "",
-                "genre": "",
+                "kind": "",
             }
         )
 
         self.assertFalse(form.is_valid())
         self.assertIn("amount", form.errors)
-        self.assertIn("genre", form.errors)
+        self.assertIn("kind", form.errors)
         self.assertIn("category", form.errors)

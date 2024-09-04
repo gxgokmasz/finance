@@ -1,0 +1,29 @@
+{% extends "layouts/main.html" %}
+{% load input_tags %}
+{% block title %}
+  Finance | Deletar Transação
+{% endblock title %}
+{% block content %}
+  <div class="flex flex-col justify-center items-center flex-1">
+    <form class="flex flex-col gap-3 justify-center items-center" method="post">
+      {% csrf_token %}
+      <h1 class="text-2xl font-bold leading-tight tracking-tight text-gray-900 text-justify dark:text-white">
+        Tem certeza que deseja deletar a transação?
+      </h1>
+      <p class="text-lg font-light text-gray-500 dark:text-gray-400">
+        {{ transaction.category }} - {{ transaction.kind }} - R${{ transaction.amount }}
+      </p>
+      <div class="flex flex-col gap-3 w-full">
+        <button id="submit_button"
+                type="submit"
+                class="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+          Confirmar deleção
+        </button>
+        <a href="{% url 'transaction_list' %}"
+           class="w-full text-white bg-gray-600 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+          Cancelar
+        </a>
+      </div>
+    </form>
+  </div>
+{% endblock content %}
