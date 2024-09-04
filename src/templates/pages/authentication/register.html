@@ -22,11 +22,9 @@
                 {{ form.username }}
               {% endif %}
               {% if form.username.errors %}
-                <div class="mt-1">
-                  {% for error in form.username.errors %}
-                    {% include "partials/_error-message.html" with error=error %}
-                  {% endfor %}
-                </div>
+                {% for error in form.username.errors %}
+                  {% include "partials/common/_error-message.html" with error=error %}
+                {% endfor %}
               {% endif %}
             </div>
             <div>
@@ -38,11 +36,9 @@
                 {{ form.email }}
               {% endif %}
               {% if form.email.errors %}
-                <div class="mt-1">
-                  {% for error in form.email.errors %}
-                    {% include "partials/_error-message.html" with error=error %}
-                  {% endfor %}
-                </div>
+                {% for error in form.email.errors %}
+                  {% include "partials/common/_error-message.html" with error=error %}
+                {% endfor %}
               {% endif %}
             </div>
             <div>
@@ -63,11 +59,9 @@
                 {{ form.password2 }}
               {% endif %}
               {% if form.password2.errors or form.password1.errors %}
-                <div class="mt-1">
-                  {% for error in form.password2.errors %}
-                    {% include "partials/_error-message.html" with error=error %}
-                  {% endfor %}
-                </div>
+                {% for error in form.password2.errors %}
+                  {% include "partials/common/_error-message.html" with error=error %}
+                {% endfor %}
               {% endif %}
             </div>
             <button id="submit_button"
